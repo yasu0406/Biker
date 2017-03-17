@@ -90,17 +90,8 @@
                 android:layout_weight="1"
                 android:layout_height="40dp"
                 tools:layout_width="wrap_content"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginTop="10dp" />
 
-            <ImageButton
-                android:layout_width="match_parent"
-                app:srcCompat="@drawable/twitter"
-                android:id="@+id/twitterButton"
-                android:scaleType="centerInside"
-                android:background="@drawable/bg"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="5dp" />
         </LinearLayout>
 
     </LinearLayout>

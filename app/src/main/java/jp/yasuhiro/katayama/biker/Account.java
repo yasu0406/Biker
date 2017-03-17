@@ -8,27 +8,36 @@ import java.io.Serializable;
 
 public class Account implements Serializable {
     private String mNickName;
-    private String mMan;
-    private String mWoman;
-    private int mAge;
+    private String mSex;
+    private String mAge;
     private String mBlood;
     private String mRegion;
     private String mMyBike;
     private String mBikeHistory;
     private String mEmail;
     private String mPassWord;
+    private String uid;
+    private byte[] mBitmapArray;
+    private String mIntroduction;
 
-    public Account(String mNickName, String mMan, String mWoman, int mAge, String mBlood, String mRegion, String mMyBike, String mBikeHistory, String mEmail, String mPassWord) {
+    public Account(String mNickName) {
         this.mNickName = mNickName;
-        this.mMan = mMan;
-        this.mWoman = mWoman;
-        this.mAge = mAge;
-        this.mBlood = mBlood;
-        this.mRegion = mRegion;
-        this.mMyBike = mMyBike;
-        this.mBikeHistory = mBikeHistory;
-        this.mEmail = mEmail;
-        this.mPassWord = mPassWord;
+    }
+    public Account(byte[] bytes) {
+        this.mBitmapArray = bytes.clone();
+    }
+
+    public Account(String nickname, String sex, String age, String blood, String region, String myBike, String bikeHistory, byte[] bytes, String introduction, String uid) {
+        this.mNickName = nickname;
+        this.mSex = sex;
+        this.mAge = age;
+        this.mBlood = blood;
+        this.mRegion = region;
+        this.mMyBike = myBike;
+        this.mBikeHistory = bikeHistory;
+        this.mBitmapArray = bytes.clone();
+        this.mIntroduction = introduction;
+        this.uid = uid;
     }
 
     public String getmNickName() {
@@ -39,27 +48,19 @@ public class Account implements Serializable {
         this.mNickName = mNickName;
     }
 
-    public String getmMan() {
-        return mMan;
+    public String getmSex() {
+        return mSex;
     }
 
-    public void setmMan(String mMan) {
-        this.mMan = mMan;
+    public void setmSex(String mSex) {
+        this.mSex = mSex;
     }
 
-    public String getmWoman() {
-        return mWoman;
-    }
-
-    public void setmWoman(String mWoman) {
-        this.mWoman = mWoman;
-    }
-
-    public int getmAge() {
+    public String getmAge() {
         return mAge;
     }
 
-    public void setmAge(int mAge) {
+    public void setmAge(String mAge) {
         this.mAge = mAge;
     }
 
@@ -109,5 +110,29 @@ public class Account implements Serializable {
 
     public void setmPassWord(String mPassWord) {
         this.mPassWord = mPassWord;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public byte[] getmBitmapArray() {
+        return mBitmapArray;
+    }
+
+    public void setmBitmapArray(byte[] mBitmapArray) {
+        this.mBitmapArray = mBitmapArray;
+    }
+
+    public String getmIntroduction() {
+        return mIntroduction;
+    }
+
+    public void setmIntroduction(String mIntroduction) {
+        this.mIntroduction = mIntroduction;
     }
 }

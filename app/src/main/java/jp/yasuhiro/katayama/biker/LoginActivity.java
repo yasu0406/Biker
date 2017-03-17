@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,9 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     OnCompleteListener<AuthResult> mLoginListener;
     DatabaseReference mDatabaseReference;
 
-    // アカウント作成時にフラグを立て、ログイン処理後に名前をFirebaseに保存する
-    boolean mIsCreateAccount = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +48,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
-                    // 成功した場合
-                    FirebaseUser user = mAuth.getCurrentUser();
                     // プログレスダイアログを非表示にする
                     mProgress.dismiss();
 
@@ -102,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         signButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), signUpActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(intent);
             }
         });

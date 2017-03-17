@@ -8,147 +8,185 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="jp.yasuhiro.katayama.biker.signUpActivity">
+    tools:context="jp.yasuhiro.katayama.biker.SignUpActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/nicknameEdit"
-            android:hint="ニックネーム"
-            android:background="@android:color/background_light"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="5dp"
-            android:layout_height="40dp" />
-
-        <RadioGroup
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/common_google_signin_btn_text_dark_default"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp">
-
-            <RadioButton
-                android:text="男性"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/manRdio"
-                android:layout_weight="1"
-                android:textSize="16sp" />
-
-            <RadioButton
-                android:text="女性"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/womanRadio"
-                android:layout_weight="1"
-                android:textSize="16sp" />
-        </RadioGroup>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:ems="10"
-            android:id="@+id/ageEdit"
-            android:hint="年齢"
-            android:background="@android:color/background_light"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="5dp"
-            android:layout_height="40dp"
-            android:inputType="number" />
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/common_google_signin_btn_text_dark_default"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp">
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/nicknameEdit"
+                android:hint="ニックネーム"
+                android:background="@android:color/background_light"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="5dp"
+                android:layout_height="40dp" />
 
-            <Spinner
+            <RadioGroup
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/bloodspinner"
-                android:entries="@array/list"
-                android:spinnerMode="dialog"
-                style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
+                android:layout_marginTop="10dp"
+                android:background="@color/common_google_signin_btn_text_dark_default"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:id="@+id/sex">
+
+                <RadioButton
+                    android:text="男性"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/manRdio"
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:text="女性"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/womanRadio"
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:ems="10"
+                android:id="@+id/ageEdit"
+                android:hint="年齢"
+                android:background="@android:color/background_light"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:layout_height="40dp"
+                android:inputType="number" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_google_signin_btn_text_dark_default"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bloodspinner"
+                    android:entries="@array/list"
+                    android:spinnerMode="dialog"
+                    style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/regionEdit"
+                android:hint="地域"
+                android:background="@android:color/background_light"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:layout_height="40dp" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/mybikeEdit"
+                android:hint="所有バイク"
+                android:background="@android:color/background_light"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:layout_height="40dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/bikehistoryEdit"
+                android:hint="バイク歴"
+                android:background="@android:color/background_light"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:layout_height="40dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:ems="10"
+                android:id="@+id/emailEdit"
+                android:hint="メールアドレス"
+                android:background="@android:color/background_light"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:layout_height="40dp"
+                android:inputType="text" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/passEdit"
+                android:hint="パスワード"
+                android:background="@android:color/background_light"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="プロフィール画像"
+                android:id="@+id/textView2"
+                android:layout_below="@+id/bodyText"
+                android:layout_alignParentStart="true"
                 android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/mProfileImage"
+                android:layout_gravity="center"
+                android:layout_below="@+id/textView2"
+                android:background="#d3d3d3"
+                android:layout_centerHorizontal="true"/>
+
+            <EditText
+                android:hint="自己紹介文"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:gravity="top"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/text_box_border"
+                android:id="@+id/introductionEdit" />
+
+            <Button
+                android:text="登録する"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/registrationButton"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="30dp" />
         </LinearLayout>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/regionEdit"
-            android:hint="地域"
-            android:background="@android:color/background_light"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="5dp"
-            android:layout_height="40dp" />
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/mybikeEdit"
-            android:hint="所有バイク"
-            android:background="@android:color/background_light"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="5dp"
-            android:layout_height="40dp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/bikehistoryEdit"
-            android:hint="バイク歴"
-            android:background="@android:color/background_light"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="5dp"
-            android:layout_height="40dp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/emailEdit"
-            android:hint="メールアドレス"
-            android:background="@android:color/background_light"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="5dp"
-            android:layout_height="40dp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/passEdit"
-            android:hint="パスワード"
-            android:background="@android:color/background_light"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="5dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="40dp" />
-
-        <Button
-            android:text="登録する"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/registrationButton"
-            android:layout_gravity="center"
-            android:background="@drawable/custom_button"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
