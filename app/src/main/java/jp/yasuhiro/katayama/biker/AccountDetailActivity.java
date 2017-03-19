@@ -32,10 +32,6 @@ public class AccountDetailActivity extends Activity
     private TextView mMyBike;
     private TextView mBikeHistory;
     private TextView mIntroduction;
-    private ImageView mNavProfile;
-    private ImageView mNavChat;
-    private ImageView mNavMap;
-    private ImageView mNavMyPage;
 
 
     @Override
@@ -45,58 +41,14 @@ public class AccountDetailActivity extends Activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("プロフィール");
 
-        // ログイン済みのユーザーを収録する
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        // ログインしていなければログイン画面に遷移させる
-        if (user == null) {
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intent);
-        }
-
         Bundle extras = getIntent().getExtras();
         mAccount = (Account) extras.get("account");
 
-        mProfileImage = (ImageView) findViewById(R.id.mProfileImage);
-        byte[] bytes = mAccount.getmBitmapArray();
-        if (bytes.length != 0) {
-            Bitmap image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length).copy(Bitmap.Config.ARGB_8888, true);
-            mProfileImage = (ImageView)findViewById(R.id.mProfileImage);
-            mProfileImage.setImageBitmap(image);
-        }
-        mNickName = (TextView) findViewById(R.id.nickNameTitle);
-        mNickName.setText(mAccount.getmNickName());
-        mRegion = (TextView) findViewById(R.id.regionTitle);
-        mRegion.setText(mAccount.getmRegion());
+        checkLoginUser();
 
+        setupUser();
 
-        mNickName = (TextView) findViewById(R.id.nickName);
-        mNickName.setText(mAccount.getmNickName());
-        mSex = (TextView) findViewById(R.id.sex);
-        mSex.setText(mAccount.getmSex());
-        mAge = (TextView)findViewById(R.id.age);
-        mAge.setText(mAccount.getmAge() + "歳");
-        mRegion = (TextView) findViewById(R.id.region);
-        mRegion.setText(mAccount.getmRegion());
-        mBlood = (TextView) findViewById(R.id.bloodType);
-        mBlood.setText(mAccount.getmBlood());
-        mMyBike = (TextView) findViewById(R.id.myBike);
-        mMyBike.setText(mAccount.getmMyBike());
-        mBikeHistory = (TextView) findViewById(R.id.bikeHistory);
-        mBikeHistory.setText(mAccount.getmBikeHistory() + "年");
-        mIntroduction = (TextView)findViewById(R.id.introduction);
-        mIntroduction.setText(mAccount.getmIntroduction());
-
-
-        mNavProfile = (ImageView) findViewById(R.id.footerNavProfile);
-        mNavChat = (ImageView) findViewById(R.id.footerNavChat);
-        mNavMap = (ImageView) findViewById(R.id.footerNavMap);
-        mNavMyPage = (ImageView) findViewById(R.id.footerNavMyPage);
-
-        mNavProfile.setOnClickListener(this);
-        mNavChat.setOnClickListener(this);
-        mNavMap.setOnClickListener(this);
-        mNavMyPage.setOnClickListener(this);
+        FooterNavigation.createFooterNav(this,this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -162,18 +114,56 @@ public class AccountDetailActivity extends Activity
 
     @Override
     public void onClick(View v){
-        if(v == mNavProfile){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-        }else if(v == mNavChat){
-            Intent intent = new Intent(getApplicationContext(), ChatListActivity.class);
-            startActivity(intent);
-        }else if(v == mNavMap){
-            Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-            startActivity(intent);
-        }else if(v == mNavMyPage){
-            Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
-            startActivity(intent);
+        FooterNavigation.moveFooterNav(v, this);
+    }
+
+    // ログインチェックメソッド
+    public void checkLoginUser() {
+        // ログイン済みのユーザーを収録する
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        // ログインしていなければログイン画面に遷移させる
+        if (user == null) {
+            moveLoginPage();
         }
+    }
+
+    // ユーザー情報メソッド
+    public void setupUser() {
+        mProfileImage = (ImageView) findViewById(R.id.mProfileImage);
+        byte[] bytes = mAccount.getmBitmapArray();
+        if (bytes.length != 0) {
+            Bitmap image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length).copy(Bitmap.Config.ARGB_8888, true);
+            mProfileImage = (ImageView)findViewById(R.id.mProfileImage);
+            mProfileImage.setImageBitmap(image);
+        }
+        mNickName = (TextView) findViewById(R.id.nickNameTitle);
+        mNickName.setText(mAccount.getmNickName());
+        mRegion = (TextView) findViewById(R.id.regionTitle);
+        mRegion.setText(mAccount.getmRegion());
+
+
+        mNickName = (TextView) findViewById(R.id.nickName);
+        mNickName.setText(mAccount.getmNickName());
+        mSex = (TextView) findViewById(R.id.sex);
+        mSex.setText(mAccount.getmSex());
+        mAge = (TextView)findViewById(R.id.age);
+        mAge.setText(mAccount.getmAge() + "歳");
+        mRegion = (TextView) findViewById(R.id.region);
+        mRegion.setText(mAccount.getmRegion());
+        mBlood = (TextView) findViewById(R.id.bloodType);
+        mBlood.setText(mAccount.getmBlood());
+        mMyBike = (TextView) findViewById(R.id.myBike);
+        mMyBike.setText(mAccount.getmMyBike());
+        mBikeHistory = (TextView) findViewById(R.id.bikeHistory);
+        mBikeHistory.setText(mAccount.getmBikeHistory() + "年");
+        mIntroduction = (TextView)findViewById(R.id.introduction);
+        mIntroduction.setText(mAccount.getmIntroduction());
+    }
+
+    // ログインページ遷移メソッド
+    public void moveLoginPage(){
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
     }
 }
